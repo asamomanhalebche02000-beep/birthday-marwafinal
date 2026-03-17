@@ -34,7 +34,7 @@ h1 { margin-top: 20px; }
   letter-spacing: 3px;
 }
 
-/* ✅ centered container */
+/* centered container */
 .container {
   display: flex;
   flex-direction: column;
@@ -53,7 +53,7 @@ h1 { margin-top: 20px; }
   text-align: center;
 }
 
-/* ✅ image always centered under text */
+/* image always centered under text */
 img {
   width: 250px;
   border-radius: 15px;
@@ -94,10 +94,10 @@ button {
 <div class="cake">🎂</div>
 
 <div id="candles" class="candles">
-🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️
+🕯️🕯️🕯️��️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️
 </div>
 
-<!-- ✅ everything stacked vertically & centered -->
+<!-- everything stacked vertically & centered -->
 <div class="container">
   <div id="box"></div>
   <img id="image" style="display:none;">
@@ -134,6 +134,7 @@ img: "https://i.imgur.com/mls0sik.jpeg"
 let index = 0;
 let i = 0;
 
+// typing effect
 function typeWriter(text) {
   if (i < text.length) {
     document.getElementById("box").innerHTML += text.charAt(i);
@@ -142,6 +143,7 @@ function typeWriter(text) {
   }
 }
 
+// next slide
 function nextText() {
   if (index < slides.length) {
     document.getElementById("box").innerHTML = "";
@@ -155,9 +157,16 @@ function nextText() {
 
     index++;
 
+    // volume control + play audio on first click
     if (index === 1) {
-      document.getElementById("music").play().catch(e => console.log(e));
-      document.getElementById("voice").play().catch(e => console.log(e));
+      const voice = document.getElementById("voice");
+      const music = document.getElementById("music");
+
+      voice.volume = 1.0;   // voice LOUD (max)
+      music.volume = 0.3;   // music quiet (background)
+
+      voice.play().catch(e => console.log(e));
+      music.play().catch(e => console.log(e));
     }
 
   } else {
@@ -165,15 +174,16 @@ function nextText() {
   }
 }
 
+// floating hearts
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.innerHTML = "❤️";
-  heart.style.left = Math.random()*100 + "vw";
-  heart.style.fontSize = (Math.random()*20+10)+"px";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
   document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),5000);
-},300);
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
 </script>
 
 </body>
