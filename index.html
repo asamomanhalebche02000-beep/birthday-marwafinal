@@ -94,7 +94,7 @@ button {
 <div class="cake">🎂</div>
 
 <div id="candles" class="candles">
-🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️
+🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️🕯️🕯️🕯️🕯️ 🕯️
 </div>
 
 <!-- everything stacked vertically & centered -->
@@ -162,14 +162,18 @@ function nextText() {
       const voice = document.getElementById("voice");
       const music = document.getElementById("music");
 
-      voice.volume = 1.0;   // voice LOUD (max)
-      music.volume = 0.3;   // music quiet (background)
+      voice.volume = 1.0;
+      music.volume = 0.3;
 
       voice.play().catch(e => console.log(e));
       music.play().catch(e => console.log(e));
     }
 
+    // ✅ After first click, button says "Next"
+    document.getElementById("nextBtn").innerHTML = "Next ❤️";
+
   } else {
+    // ✅ After last slide, button says "The End"
     document.getElementById("nextBtn").innerHTML = "❤️ The End ❤️";
   }
 }
